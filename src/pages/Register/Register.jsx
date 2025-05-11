@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import registerLottieData from '../../../src/assets/lottie/register.json'
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import SocialLogin from '../shared/SocialLogin';
 
 const Register = () => {
     const { createUser, setLoading, user } = useContext(AuthContext)
@@ -79,9 +80,10 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type='submit' className="btn btn-primary">Register</button>
+                            <button type='submit' className="btn btn-primary w-full">Register</button>
                         </div>
                     </form>
+                    <SocialLogin />
                 </div>
             </div>
         </div>
