@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import jobIcon from "../../assets/icons/jobPortal2.png"
 
 const Navbar = () => {
-    const { user, signOutUser, setLoading } = useContext(AuthContext);
+    const { user, signOutUser, } = useContext(AuthContext);
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
