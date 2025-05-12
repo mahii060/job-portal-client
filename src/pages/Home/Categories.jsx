@@ -17,35 +17,35 @@ const Categories = () => {
                     <img src={marketingIcon} className='w-10 h-10' alt="" />
                     <div>
                         <h3 className="text-base font-bold">Marketing and Sale</h3>
-                        <p className='text-sm text-gray-600'>1526 Jobs Available</p>
+                        <p className='text-sm text-gray-500 font-medium'>1526 Jobs Available</p>
                     </div>
                 </div>
                 <div className='flex justify-center items-center gap-3 border hover:border-blue-300 transition-transform duration-700 hover:shadow-lg rounded-2xl py-4 px-2 hover:-translate-y-1'>
                     <img src={financeIcon} className='w-10 h-10' alt="" />
                     <div>
                         <h3 className="text-base font-bold">Finance</h3>
-                        <p className='text-sm text-gray-600'>1526 Jobs Available</p>
+                        <p className='text-sm text-gray-500 font-medium'>1526 Jobs Available</p>
                     </div>
                 </div>
                 <div className='flex justify-center items-center gap-3 border hover:border-blue-300 transition-transform duration-700 hover:shadow-lg rounded-2xl py-4 px-2 hover:-translate-y-1'>
                     <img src={software} className='w-10 h-10' alt="" />
                     <div>
                         <h3 className="text-base font-bold">Software</h3>
-                        <p className='text-sm text-gray-600'>1526 Jobs Available</p>
+                        <p className='text-sm text-gray-500 font-medium'>1526 Jobs Available</p>
                     </div>
                 </div>
                 <div className='flex justify-center items-center gap-3 border hover:border-blue-300 transition-transform duration-700 hover:shadow-lg rounded-2xl py-4 px-2 hover:-translate-y-1'>
                     <img src={humanResource} className='w-10 h-10' alt="" />
                     <div>
                         <h3 className="text-base font-bold">Human Resource</h3>
-                        <p className='text-sm text-gray-600'>1526 Jobs Available</p>
+                        <p className='text-sm text-gray-500 font-medium'>1526 Jobs Available</p>
                     </div>
                 </div>
                 <div className='flex justify-center items-center gap-3 border hover:border-blue-300 transition-transform duration-700 hover:shadow-lg rounded-2xl py-4 px-2 hover:-translate-y-1'>
                     <img src={customerHelp} className='w-10 h-10' alt="" />
                     <div>
                         <h3 className="text-base font-bold">Customer Help</h3>
-                        <p className='text-sm text-gray-600 font-medium'>1526 Jobs Available</p>
+                        <p className='text-sm text-gray-500 font-medium'>1526 Jobs Available</p>
                     </div>
                 </div>
 
