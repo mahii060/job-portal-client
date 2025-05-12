@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 
 const Register = () => {
-    const { createUser, setLoading, user } = useContext(AuthContext)
+    const { createUser, user } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     console.log(user);

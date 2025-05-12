@@ -33,9 +33,8 @@ const Banner = () => {
                     >
                         JOb
                     </motion.span> News!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    <p className="py-6 text-gray-600 w-4/5 text-justify">
+                        A user-friendly job portal connecting job seekers with employers, offering features like resume uploads, job alerts, company profiles, and advanced search to streamline the recruitment process.
                     </p>
                     <motion.button whileTap={{ scale: .90 }} className="btn btn-primary">Get Started</motion.button>
                 </div>
