@@ -25,7 +25,7 @@ const Banner = () => {
                     <h1 className="text-5xl font-bold text-inherit">Latest <motion.span
                         animate={{ color: ["#a704ed", "#f201a2 ", "#090dff", "#20c2ff", "#a704ed"] }}
                         transition={{
-                            duration: 2,
+                            duration: 10,
                             repeat: Infinity,
                             ease: "easeInOut",
                             repeatType: "loop"
