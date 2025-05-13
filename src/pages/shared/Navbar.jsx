@@ -4,12 +4,11 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import jobIcon from "../../assets/icons/jobPortal2.png"
 
 const Navbar = () => {
-    const { user, signOutUser, } = useContext(AuthContext);
+    const { user, signOutUser, setLoading } = useContext(AuthContext);
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-                // setLoading(false)
-                alert("Signed Out successfully!")
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error);
@@ -65,7 +64,6 @@ const Navbar = () => {
                         <Link to='/signIn' className="btn btn-success">Sign In</Link>
                     </>
                 }
-
             </div>
         </div>
     );
