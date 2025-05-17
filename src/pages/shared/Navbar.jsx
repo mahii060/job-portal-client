@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext/AuthContext';
 import jobIcon from "../../assets/icons/jobPortal2.png"
+import useAuth from '../../component/useAuth';
 
 const Navbar = () => {
-    const { user, signOutUser, setLoading } = useContext(AuthContext);
+    const { user, signOutUser, setLoading } = useAuth();
+    // console.log(user);
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
@@ -22,7 +22,7 @@ const Navbar = () => {
         <li><a>Item 3</a></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-blue-50 rounded">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

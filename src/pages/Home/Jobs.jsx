@@ -3,7 +3,6 @@ import JobCard from './JobCard';
 
 const Jobs = () => {
     const [jobs, setJobs] = useState([])
-    console.log(jobs);
 
     useEffect(() => {
         fetch('http://localhost:5000/jobs')

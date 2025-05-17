@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Outlet, useNavigation } from 'react-router-dom';
+import { Outlet, } from 'react-router-dom';
 import Navbar from '../pages/shared/Navbar';
 import Footer from '../pages/shared/Footer';
 import Loader from '../component/Loader';

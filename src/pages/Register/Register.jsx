@@ -38,7 +38,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 navigate('/')
             })
             .catch(error => {

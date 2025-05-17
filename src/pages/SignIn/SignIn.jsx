@@ -3,12 +3,14 @@ import Lottie from 'lottie-react';
 
 import signInLottie from '../../../src/assets/lottie/signInLottie.json'
 import { AuthContext } from '../../context/AuthContext/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SignIn = () => {
     const { signInUser, setLoading } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location);
 
     const [showPassword, setShowPassword] = useState(false)
     const handleSignIn = event => {
@@ -19,8 +21,7 @@ const SignIn = () => {
         signInUser(email, password)
             .then(result => {
                 setLoading(false)
-                navigate('/')
-                console.log(result.user);
+                navigate(location?.state || '/')
             })
             .catch(error => {
                 console.log(error);

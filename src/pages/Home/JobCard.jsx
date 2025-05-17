@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaLocationArrow } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const JobCard = ({ job }) => {
-    const { title, description, company, location, requirements, salaryRange, company_logo } = job
+    const { _id, title, description, company, location, requirements, salaryRange, company_logo } = job
     return (
         <div className="card bg-base-100 border shadow-xl">
             <div className='flex gap-4 m-4'>
@@ -23,7 +24,7 @@ const JobCard = ({ job }) => {
                 </h2>
                 <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <Link to={`/jobs/${_id}`} className="btn btn-primary">Apply</Link>
                 </div>
             </div>
         </div>
