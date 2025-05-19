@@ -3,9 +3,10 @@ import useAuth from '../component/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
-    const { user } = useAuth()
+    const { user, loading } = useAuth()
     const location = useLocation()
-    console.log(location);
+
+    if (loading) return <span className='loading loading-ring loading-xl'></span>
 
     if (user) return children
 
