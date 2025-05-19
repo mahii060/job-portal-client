@@ -1,16 +1,46 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../component/useAuth';
+import Swal from "sweetalert2"
 
 const JobApply = () => {
     const { id } = useParams()
-    console.log(id);
+    const { user } = useAuth()
+    // console.log(id);
     const submitJobApplication = event => {
         event.preventDefault()
         const form = event.target;
         const linkedIn = form.linkedIn.value;
         const github = form.github.value;
         const resume = form.resume.value;
-        console.log(linkedIn);
+
+        const jobApplication = {
+            job_id: id,
+            applicant_email: user?.email,
+            linkedIn,
+            github,
+            resume,
+        }
+
+        fetch('http://localhost:5000/job-applications', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(jobApplication)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Congratulations!",
+                        text: "You successfully applied to the job!",
+                        icon: "success"
+                    });
+                    form.reset()
+                }
+            })
+
     }
     return (
 
@@ -20,11 +50,11 @@ const JobApply = () => {
                 <form onSubmit={submitJobApplication}>
                     <fieldset className="fieldset">
                         <label className="label">LinkedIn URL</label>
-                        <input type="url" name='linkedIn' className="input w-full" placeholder="LinkedIn URL" />
+                        <input type="url" name='linkedIn' className="input w-full" required placeholder="LinkedIn URL" />
                         <label className="label">Github URL</label>
-                        <input type="url" name='github' className="input w-full" placeholder="Github URL" />
+                        <input type="url" name='github' className="input w-full" required placeholder="Github URL" />
                         <label className="label">Resume URL</label>
-                        <input type="url" name='resume' className="input w-full" placeholder="Resume URL" />
+                        <input type="url" name='resume' className="input w-full" required placeholder="Resume URL" />
                         <button type='submit' className="btn btn-primary mt-4">Apply</button>
                     </fieldset>
                 </form>

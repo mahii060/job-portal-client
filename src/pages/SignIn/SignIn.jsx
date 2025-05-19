@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import signInLottie from '../../../src/assets/lottie/signInLottie.json'
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../shared/SocialLogin';
 
 
 const SignIn = () => {
@@ -62,9 +63,10 @@ const SignIn = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type='submit' className="btn btn-primary">Sign In</button>
+                            <button type='submit' className="btn btn-primary w-full">Sign In</button>
                         </div>
                     </form>
+                    <SocialLogin />
                 </div>
             </div>
         </div>
