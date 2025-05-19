@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import jobIcon from "../../assets/icons/jobPortal2.png"
 import useAuth from '../../component/useAuth';
 
@@ -15,11 +15,9 @@ const Navbar = () => {
             })
     }
     const links = <>
-        <li><a>Item 1</a></li>
-        <li>
-            <a>Parent</a>
-        </li>
-        <li><a>Item 3</a></li>
+        <li><NavLink to='/'>Home</NavLink> </li>
+        <li><NavLink to='/'>Home</NavLink> </li>
+        <li><NavLink to='/myApplications'>My Applications</NavLink> </li>
     </>
     return (
         <div className="navbar bg-blue-50 rounded ">
@@ -46,8 +44,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost text-xl">
-                    <img src={jobIcon} className='w-12' alt="" />
-                    <h3 className='text-3xl text-gray-700 font-semibold'>Job Portal</h3>
+                    <img src={jobIcon} className='w-8 md:w-12' alt="" />
+                    <h3 className=' md:text-3xl text-gray-700 font-semibold'>Job Portal</h3>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -58,7 +56,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <button onClick={handleSignOut} className="btn btn-error">Sign Out</button>
+                        <button onClick={handleSignOut} className="btn btn-error btn-sm md:btn-md">Sign Out</button>
                     </> : <>
                         <Link to='/register' className="link link-primary">Register</Link>
                         <Link to='/signIn' className="btn btn-success">Sign In</Link>

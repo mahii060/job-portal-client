@@ -1,11 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../component/useAuth';
 import Swal from "sweetalert2"
 
 const JobApply = () => {
     const { id } = useParams()
     const { user } = useAuth()
+    const navigate = useNavigate()
     // console.log(id);
     const submitJobApplication = event => {
         event.preventDefault()
@@ -38,6 +39,7 @@ const JobApply = () => {
                         icon: "success"
                     });
                     form.reset()
+                    navigate('/myApplications')
                 }
             })
 
