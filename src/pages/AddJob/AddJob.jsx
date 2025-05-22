@@ -1,14 +1,42 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import useAuth from '../../component/useAuth';
 
 const AddJob = () => {
-
+    const { setLoading, user } = useAuth();
     const handleAddJob = e => {
+        setLoading(true)
         e.preventDefault()
         const formData = new FormData(e.target)
         const initialData = Object.fromEntries(formData.entries())
         const { min, max, currency, ...newJob } = initialData;
         newJob.salary_range = { min, max, currency }
+        newJob.requirements = newJob.requirements.split('\n');
+        newJob.responsibilities = newJob.responsibilities.split('\n');
         console.log(newJob)
+
+        fetch('http://localhost:5000/jobs', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newJob)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setLoading(false)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Job Added",
+                        text: "You successfully add the job",
+                        icon: "success"
+                    });
+                }
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div>
@@ -23,16 +51,16 @@ const AddJob = () => {
                     <input type="text" name='location' required className="input w-full" placeholder="Job Location" />
                     {/* Job type */}
                     <label className="label">Job Type</label>
-                    <select name='job_type' required defaultValue="Remote" className="select w-full">
-                        <option disabled={true}>Select a Job type</option>
+                    <select name='job_type' required defaultValue="Select a Job type" className="select w-full">
+                        <option disabled>Select a Job type</option>
                         <option>Full-time</option>
                         <option>Part-time</option>
                         <option>Intern</option>
                     </select>
                     {/* Job Category */}
                     <label className="label">Job Field</label>
-                    <select name='job_category' required defaultValue="Engineering" className="select w-full">
-                        <option disabled={true}>Select a Job field</option>
+                    <select name='job_category' required defaultValue="Select a Job field" className="select w-full">
+                        <option disabled>Select a Job field</option>
                         <option>Engineering</option>
                         <option>Marketing</option>
                         <option>Finance</option>
@@ -49,8 +77,8 @@ const AddJob = () => {
                         </div>
                         <div>
                             {/* <label className="label">Currency</label> */}
-                            <select name='currency' required defaultValue="Currency" className="select w-full">
-                                <option disabled={true}>Select Currency</option>
+                            <select name='currency' required defaultValue="Select Currency" className="select w-full">
+                                <option disabled>Select Currency</option>
                                 <option>BDT</option>
                                 <option>USD</option>
                                 <option>INR</option>
@@ -76,7 +104,7 @@ const AddJob = () => {
                     <input type="text" name='hr_name' required className="input w-full" placeholder="HR Name" />
                     {/* Hr Email */}
                     <label className="label">HR Email</label>
-                    <input type="email" name='hr_email' required className="input w-full" placeholder="HR Email" />
+                    <input type="email" name='hr_email' defaultValue={user?.email} required className="input w-full" placeholder="HR Email" />
                     {/* Company logo URL */}
                     <label className="label">Company Logo URL</label>
                     <input type="url" name='company_logo' required className="input w-full" placeholder="Company Logo URL" />
