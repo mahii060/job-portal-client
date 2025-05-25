@@ -1,14 +1,18 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../component/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
     const { setLoading, user } = useAuth();
+    const navigate = useNavigate()
+
     const handleAddJob = e => {
         setLoading(true)
         e.preventDefault()
         const formData = new FormData(e.target)
         const initialData = Object.fromEntries(formData.entries())
+        console.log(initialData);
         const { min, max, currency, ...newJob } = initialData;
         newJob.salary_range = { min, max, currency }
         newJob.requirements = newJob.requirements.split('\n');
@@ -31,6 +35,7 @@ const AddJob = () => {
                         text: "You successfully add the job",
                         icon: "success"
                     });
+                    navigate('/myPostedJobs')
                 }
                 console.log(data);
             })
@@ -105,6 +110,11 @@ const AddJob = () => {
                     {/* Hr Email */}
                     <label className="label">HR Email</label>
                     <input type="email" name='hr_email' defaultValue={user?.email} required className="input w-full" placeholder="HR Email" />
+
+                    {/* Application Deadline */}
+                    <label className="label">Deadline</label>
+                    <input type="date" name='applicationDeadline' required className="input w-full" placeholder="Application Deadline" />
+
                     {/* Company logo URL */}
                     <label className="label">Company Logo URL</label>
                     <input type="url" name='company_logo' required className="input w-full" placeholder="Company Logo URL" />

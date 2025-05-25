@@ -30,7 +30,9 @@ const JobCard = ({ job }) => {
                 <h2 className="card-title">{title ? title : job_title}
                     <div className="badge badge-success">NEW</div>
                 </h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                <p>
+                    {description ? description : "A card component has a figure, a body part, and inside body there are title and actions parts"}
+                </p>
                 <div className="card-actions justify-end">
                     <Link to={`/jobs/${_id}`} className="btn btn-primary">Apply</Link>
                 </div>
